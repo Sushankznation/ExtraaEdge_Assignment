@@ -1,0 +1,185 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+input{
+  outline: 1px solid rgb(222, 223, 222);
+}
+input:focus {
+  outline: 2px solid rgb(81, 150, 240);
+}
+.container {
+  border: 1px solid rgb(244, 243, 243);
+  color: rgb(80, 80, 80);
+  margin: 1rem;
+}
+
+.card-details {
+  padding: 1rem;
+  height: 130px;
+}
+
+h3 {
+  margin-top: 0.5rem;
+  color: rgb(64, 64, 64);
+}
+p {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+}
+.contact-icons {
+  margin-right: 0.25rem;
+}
+.heart {
+  color: red;
+  cursor: pointer;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(244, 243, 243);
+  height: 2.5rem;
+  width: 100%;
+}
+
+.example-warper {
+  width: 100%;
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border: 1px #cfcece dashed;
+}
+
+.button {
+  font-family: "Roboto", Arial, sans-serif;
+  color: white;
+  cursor: pointer;
+  padding: 0px 30px;
+  display: inline-block;
+  margin: 10px 15px;
+  text-transform: uppercase;
+  line-height: 2em;
+  letter-spacing: 1.5px;
+  font-size: 1em;
+  outline: none;
+  position: relative;
+  font-size: 14px;
+  border: 3px solid rgb(70, 170, 236);
+  background-color: rgb(81, 150, 240);
+  border-radius: 4px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+  font-weight: 900;
+}
+.button:hover, .button.hover {
+  border-color: #ec4646;
+  background-color: #ec4646;
+  color: white;
+  font-weight: 900;
+}
+.card {
+  font-size: 12px;
+}
+.card > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 14px;
+  text-align: center;
+}
+
+.modal {
+  font-size: 12px;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: left;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+.modal > .actions {
+  margin: auto;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 5px;
+  font-weight: 900;
+  line-height: 20px;
+  right: -10px;
+  top: -15px;
+  font-size: 20px;
+  background: #ec4646;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+}
+.close:hover{
+color: red;
+background-color: white;
+}
+
+.example-warper-start {
+  width: 100%;
+  padding: 20px 5%;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px #cfcece dashed;
+}
+
+.menu {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+.menu-item {
+  cursor: pointer;
+  padding: 5px;
+  height: 28px;
+  border-top: 1px solid rgb(187, 187, 187);
+}
+.menu-item:hover {
+  color: #ec4646;
+}
+.form-control{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.35rem;
+}
+label{
+  padding-right: 25px;
+}
+.form-control input{
+  padding:3px;
+  font-size: 0.75rem;
+  color: rgb(80, 80, 80);
+  border: none;
+  width: 288px;
+  border:1px solid rgb(80, 80, 80);
+  border-radius: 5px;
+}
+
+
+
+
+
+
