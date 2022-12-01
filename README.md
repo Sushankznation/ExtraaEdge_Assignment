@@ -2,7 +2,7 @@
 -------
 ## Host Link : https://extraaedge-assignment.vercel.app/
 -------
-## Stack Used : 
+## Stacks Used : 
 - REACT.JS
 - BOOTSTRAP
 - CSS
