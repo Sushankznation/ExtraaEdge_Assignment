@@ -7,4 +7,13 @@
 - BOOTSTRAP
 - CSS
 -------
+### Structure : 
+
+├── Public
+├── src                  
+├── test
+├── tools
+├── LICENSE
+└── README.md
+--------
 ### Author : sushantbharwal@gmail.com
