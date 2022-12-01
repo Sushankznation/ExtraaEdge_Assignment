@@ -1,8 +1,7 @@
-import { React, useState,useRef } from "react";
+import { React, useState } from "react";
 import Card from "react-bootstrap/Card";
 import { BsEnvelope } from "react-icons/bs";
 import { BsTelephone } from "react-icons/bs";
-// import { useForm } from 'react-hook-form';
 import { SiWebauthn } from "react-icons/si";
 import { BsHeart } from "react-icons/bs";
 import { BsHeartFill } from "react-icons/bs";
@@ -17,12 +16,10 @@ const Cards = (props) => {
   const { name, username, phone, email, website } = userData;
   const [liked, setLiked] = useState(false);
   const [display, setDisplay] = useState(true);
-// For Checking
-const nameRef = useRef();
-const emailRef = useRef();
-const mobRef = useRef();
-const websiteRef = useRef();
-const [err,setErr] = useState("");
+  
+  // For form Validation
+  const [nameErr, setNameErr] = useState("");
+  const [emailError, setEmailError] = useState("");
   const contentStyle = {
     maxWidth: "600px",
     width: "90%",
@@ -33,11 +30,33 @@ const [err,setErr] = useState("");
       input: event.target.value,
     });
   };
-  const handleSubmit =(e)=>{
-    e.preventDefault()
-  console.log("Submitted")
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitted");
+  };
 
+  const validateEmail = (e) => {
+    var email = e.target.value;
+    setUserData({
+      input: email,
+    });
+    if (/\S+@\S+\.\S+/.test(email)) {
+      setEmailError("");
+    } else {
+      setEmailError("Enter valid Email!");
+    }
+  };
+  const validateName = (e) => {
+    var name = e.target.value;
+    setUserData({
+      input: name,
+    });
+    if (name.length < 1) {
+      setNameErr("Invalid Name");
+    } else {
+      setNameErr("");
+    }
+  };
   return (
     <div>
       {display ? (
@@ -53,12 +72,12 @@ const [err,setErr] = useState("");
               <p>
                 <BsEnvelope className="contact-icons" /> {email}
               </p>
-              <p>
+              <p className="icons">
                 {" "}
                 <BsTelephone className="contact-icons" />
                 {phone}
               </p>
-              <p>
+              <p className="icons">
                 <SiWebauthn className="contact-icons" />
                 {website}
               </p>
@@ -91,10 +110,18 @@ const [err,setErr] = useState("");
                           type="text"
                           value={name}
                           name="name"
-                          ref={nameRef}
+                         
                           required
-                          onChange={handleChange}
+                          onChange={(e) => validateName(e)}
                         />
+                         <span
+                          style={{
+                            fontWeight: "bold",
+                            color: "red",
+                          }}
+                        >
+                          {nameErr}
+                        </span>
                       </div>
                       <div className="form-control">
                         <label htmlFor="email">* Email:</label>
@@ -103,9 +130,17 @@ const [err,setErr] = useState("");
                           value={email}
                           name="email"
                           required
-                          ref={emailRef}
-                          onChange={handleChange}
+                         
+                          onChange={(e) => validateEmail(e)}
                         />
+                        <span
+                          style={{
+                            fontWeight: "bold",
+                            color: "red",
+                          }}
+                        >
+                          {emailError}
+                        </span>
                       </div>
                       <div className="form-control">
                         <label htmlFor="phone">* Phone:</label>
@@ -114,7 +149,7 @@ const [err,setErr] = useState("");
                           value={phone}
                           name="phone"
                           required
-                          ref={mobRef}
+                         
                           onChange={handleChange}
                         />
                       </div>
@@ -125,37 +160,36 @@ const [err,setErr] = useState("");
                           onChange={handleChange}
                           value={website}
                           name="website"
-                          ref={websiteRef}
+                         
                           required
                         />
                       </div>
-                   
 
-                    <div className="actions">
-                      <button
-                        className="button cancel"
-                        onClick={() => {
-                          close();
-                        }}
-                      >
-                        Cancel
-                      </button>
-                      <button
-                      type="submit"
-                        className="button"
-                        onClick={() => {
-                          console.log("modal closed ");
-                          close();
-                        }}
-                      >
-                        OK
-                      </button>
-                    </div>
+                      <div className="actions">
+                        <button
+                          className="button cancel"
+                          onClick={() => {
+                            close();
+                          }}
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="submit"
+                          className="button"
+                          onClick={() => {
+                            console.log("Close Form");
+                            close();
+                          }}
+                        >
+                          OK
+                        </button>
+                      </div>
                     </form>
                   </div>
                 )}
               </Popup>
-              <BsTrash onClick={() => setDisplay(false)} />
+              <BsTrash className="trash" onClick={() => setDisplay(false)} />
             </div>
           </Card.Body>
         </Card>

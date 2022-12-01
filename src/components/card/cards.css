@@ -177,6 +177,16 @@ label{
   border:1px solid rgb(80, 80, 80);
   border-radius: 5px;
 }
+.icons, .trash ,.edit
+{
+cursor: pointer;
+}
+.trash:hover{
+  color: rgb(0, 110, 255);
+}
+.icons:hover{
+  color: rgb(0, 110, 255);
+}
 
 
 
