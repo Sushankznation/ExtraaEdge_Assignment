@@ -9,11 +9,11 @@
 -------
 ### Structure : 
 
-├── Public
-├── src                  
-├── test
-├── tools
-├── LICENSE
-└── README.md
+# public
+
+* [index.html](.\public\index.html)
+* [manifest.json](.\public\manifest.json)
+* [robots.txt](.\public\robots.txt)
+
 --------
 ### Author : sushantbharwal@gmail.com
