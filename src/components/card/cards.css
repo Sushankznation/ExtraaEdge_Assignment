@@ -187,7 +187,10 @@ cursor: pointer;
 .icons:hover{
   color: rgb(0, 110, 255);
 }
-
+.edit:hover{
+  cursor: pointer;
+  color: rgb(0, 110, 255);
+}
 
 
 

@@ -17,6 +17,15 @@ function App() {
     });
   }, []);
 
+  const changeInfo = (index, name, email, phone, website) => {
+    const newData = [...userData];
+    newData[index].name = name;
+    newData[index].email = email;
+    newData[index].phone = phone;
+    newData[index].website = website;
+    setUserData(newData);
+  };
+
   return (
     <div className="App">
       {loading ? (
@@ -27,7 +36,14 @@ function App() {
       ) : (
         <div className="wrapper">
           {userData.map((data, index) => {
-            return <Cards data={data} key={data.id} />;
+            return (
+              <Cards
+                data={data}
+                changeInfo={changeInfo}
+                index={index}
+                key={data.id}
+              />
+            );
           })}
         </div>
       )}

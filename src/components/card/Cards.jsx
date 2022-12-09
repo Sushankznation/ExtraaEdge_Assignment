@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import Card from "react-bootstrap/Card";
 import { BsEnvelope } from "react-icons/bs";
 import { BsTelephone } from "react-icons/bs";
@@ -13,23 +13,23 @@ import "./cards.css";
 
 const Cards = (props) => {
   const [userData, setUserData] = useState(props.data);
-  const { name, username, phone, email, website } = userData;
+
+  const { username, phone, email, website } = userData;
+  // console.log(phone);
   const [liked, setLiked] = useState(false);
   const [display, setDisplay] = useState(true);
-  
+  const [ename, setEName] = useState(username);
+  const [newemail, setNewEmail] = useState(email);
+  const [newPhone, setNewPhone] = useState(phone);
+  const [newWebsite, setNewWebsite] = useState(website);
   // For form Validation
   const [nameErr, setNameErr] = useState("");
   const [emailError, setEmailError] = useState("");
   const contentStyle = {
     maxWidth: "600px",
-    width: "90%",
+    width: "90%"
   };
 
-  const handleChange = (event) => {
-    setUserData({
-      input: event.target.value,
-    });
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitted");
@@ -37,9 +37,7 @@ const Cards = (props) => {
 
   const validateEmail = (e) => {
     var email = e.target.value;
-    setUserData({
-      input: email,
-    });
+    setNewEmail(email);
     if (/\S+@\S+\.\S+/.test(email)) {
       setEmailError("");
     } else {
@@ -48,9 +46,7 @@ const Cards = (props) => {
   };
   const validateName = (e) => {
     var name = e.target.value;
-    setUserData({
-      input: name,
-    });
+    setEName(name);
     if (name.length < 1) {
       setNameErr("Invalid Name");
     } else {
@@ -68,7 +64,7 @@ const Cards = (props) => {
           />
           <Card.Body>
             <div className="card-details">
-              <h3>{name}</h3>
+              <h3>{username}</h3>
               <p>
                 <BsEnvelope className="contact-icons" /> {email}
               </p>
@@ -93,7 +89,7 @@ const Cards = (props) => {
               )}
 
               <Popup
-                trigger={<AiOutlineEdit />}
+                trigger={<AiOutlineEdit className="edit"/>}
                 modal
                 contentStyle={contentStyle}
               >
@@ -108,16 +104,15 @@ const Cards = (props) => {
                         <label htmlFor="name">* Name:</label>
                         <input
                           type="text"
-                          value={name}
+                          value={ename}
                           name="name"
-                         
                           required
                           onChange={(e) => validateName(e)}
                         />
-                         <span
+                        <span
                           style={{
                             fontWeight: "bold",
-                            color: "red",
+                            color: "red"
                           }}
                         >
                           {nameErr}
@@ -127,16 +122,15 @@ const Cards = (props) => {
                         <label htmlFor="email">* Email:</label>
                         <input
                           type="email"
-                          value={email}
+                          value={newemail}
                           name="email"
                           required
-                         
                           onChange={(e) => validateEmail(e)}
                         />
                         <span
                           style={{
                             fontWeight: "bold",
-                            color: "red",
+                            color: "red"
                           }}
                         >
                           {emailError}
@@ -145,22 +139,24 @@ const Cards = (props) => {
                       <div className="form-control">
                         <label htmlFor="phone">* Phone:</label>
                         <input
-                          type="number"
-                          value={phone}
                           name="phone"
                           required
+                          onChange={(e) => {
+                            setNewPhone(e.target.value);
+                          }}
+                          value={newPhone}
                          
-                          onChange={handleChange}
                         />
                       </div>
                       <div className="form-control">
                         <label htmlFor="website">* Website:</label>
                         <input
                           type="text"
-                          onChange={handleChange}
-                          value={website}
+                          onChange={(e) => {
+                            setNewWebsite(e.target.value);
+                          }}
+                          value={newWebsite}
                           name="website"
-                         
                           required
                         />
                       </div>
@@ -178,6 +174,13 @@ const Cards = (props) => {
                           type="submit"
                           className="button"
                           onClick={() => {
+                            props.changeInfo(
+                              props.index,
+                              ename,
+                              newemail,
+                              newPhone,
+                              newWebsite
+                            );
                             console.log("Close Form");
                             close();
                           }}
