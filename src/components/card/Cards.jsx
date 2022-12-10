@@ -14,11 +14,11 @@ import "./cards.css";
 const Cards = (props) => {
   const [userData, setUserData] = useState(props.data);
 
-  const { username, name, phone, email, website } = userData;
+  const { username, phone, email, website } = userData;
   // console.log(phone);
   const [liked, setLiked] = useState(false);
   const [display, setDisplay] = useState(true);
-  const [ename, setEName] = useState(name);
+  const [ename, setEName] = useState(username);
   const [newemail, setNewEmail] = useState(email);
   const [newPhone, setNewPhone] = useState(phone);
   const [newWebsite, setNewWebsite] = useState(website);
@@ -64,7 +64,7 @@ const Cards = (props) => {
           />
           <Card.Body>
             <div className="card-details">
-              <h3>{ename}</h3>
+              <h3>{username}</h3>
               <p>
                 <BsEnvelope className="contact-icons" /> {email}
               </p>
