@@ -14,11 +14,10 @@ import "./cards.css";
 const Cards = (props) => {
   const [userData, setUserData] = useState(props.data);
 
-  const { username, phone, email, website } = userData;
-  // console.log(phone);
+  const { name, username, phone, email, website } = userData;
   const [liked, setLiked] = useState(false);
   const [display, setDisplay] = useState(true);
-  const [ename, setEName] = useState(username);
+  const [ename, setEName] = useState(name);
   const [newemail, setNewEmail] = useState(email);
   const [newPhone, setNewPhone] = useState(phone);
   const [newWebsite, setNewWebsite] = useState(website);
@@ -30,6 +29,11 @@ const Cards = (props) => {
     width: "90%"
   };
 
+  const handleChange = (event) => {
+    setUserData({
+      input: event.target.value
+    });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitted");
@@ -64,7 +68,7 @@ const Cards = (props) => {
           />
           <Card.Body>
             <div className="card-details">
-              <h3>{username}</h3>
+              <h3>{name}</h3>
               <p>
                 <BsEnvelope className="contact-icons" /> {email}
               </p>
@@ -89,7 +93,7 @@ const Cards = (props) => {
               )}
 
               <Popup
-                trigger={<AiOutlineEdit className="edit"/>}
+                trigger={<AiOutlineEdit />}
                 modal
                 contentStyle={contentStyle}
               >
@@ -139,13 +143,13 @@ const Cards = (props) => {
                       <div className="form-control">
                         <label htmlFor="phone">* Phone:</label>
                         <input
+                          type="text"
+                          value={newPhone}
                           name="phone"
                           required
                           onChange={(e) => {
                             setNewPhone(e.target.value);
                           }}
-                          value={newPhone}
-                         
                         />
                       </div>
                       <div className="form-control">
