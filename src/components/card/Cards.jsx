@@ -93,7 +93,7 @@ const Cards = (props) => {
               )}
 
               <Popup
-                trigger={<AiOutlineEdit />}
+                trigger={<AiOutlineEdit className="edit"/>}
                 modal
                 contentStyle={contentStyle}
               >
